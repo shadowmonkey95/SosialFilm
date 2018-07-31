@@ -13,10 +13,7 @@ return [
     'name' => 'Tên',
     'action' => 'Thao tác',
     'stt' => 'Số thứ tự',
-<<<<<<< HEAD
     'avatar' => 'Avatar',
-=======
->>>>>>> f3c3ff674bac56bbe76e550504b21e83dc0c4ad1
     'manager' => 'Trang quản trị | Mrso',
     'homepage' => 'Trang Chủ',
     'review' => 'Reviews',
