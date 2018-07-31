@@ -10,7 +10,11 @@ return [
     'genre-name' => 'Genre name',
     'genre-edit-page' => 'Edit Genre',
     'confirm-delete' => 'Want to delete?',
-    'name' => "name",
+    'name' => 'name',
     'action' => 'action',
     'stt' => 'namber order',
+    'avatar' => 'avatar',
+    'manager' => 'Manager page | Mrso',
+    'homepage' => 'Homepage',
+    'review' => 'Reviews',
 ];

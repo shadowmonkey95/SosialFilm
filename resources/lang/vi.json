@@ -21,5 +21,16 @@
     "The review has been deleted": "Bài viết của bạn đã được xóa!",
     "Submit Review": "Gửi bài viết",
     "Create a": "Tạo",
-    "Edit a": "Sửa"
+    "Create an": "Tạo",
+    "Edit a": "Sửa",
+    "Edit an": "Sửa",
+    "Date of birth": "Ngày sinh",
+    "Actor": "diễn viên",
+    "Information": "Thông tin",
+    "Country": "Quốc gia",
+    "Avatar": "Avatar",
+    "ID": "STT",
+    "Create an actor": "Tạo diễn viên",
+    "Actor list": "Danh sách diễn viên",
+    "Actor has been created": "Tạo diễn viên thành công"
 }
