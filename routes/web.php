@@ -35,6 +35,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'mana
     Route::post('users/{id?}/edit', 'UsersController@update');
     Route::get('/', 'PagesController@home');
     Route::resource('genres', 'GenreController')->except(['show']);
+//    Route::get('actors/create', 'ActorController@create');
+//    Route::post('actors/create', 'ActorController@store');
+//    Route::get('actors', 'ActorController@index');
+    Route::resource('actors', 'ActorController')->except(['show']);
 });
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
