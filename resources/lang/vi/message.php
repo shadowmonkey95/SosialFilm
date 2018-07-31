@@ -14,4 +14,7 @@ return [
     'action' => 'Thao tác',
     'stt' => 'Số thứ tự',
     'avatar' => 'Avatar',
+    'manager' => 'Trang quản trị | Mrso',
+    'homepage' => 'Trang Chủ',
+    'review' => 'Reviews',
 ];
