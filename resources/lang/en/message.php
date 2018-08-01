@@ -14,7 +14,6 @@ return [
     'action' => 'action',
     'stt' => 'number order',
     'avatar' => 'avatar',
-    'stt' => 'number order',
     'manager' => 'Manager page | Mrso',
     'homepage' => 'Homepage',
     'review' => 'Reviews',
