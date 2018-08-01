@@ -1,13 +1,9 @@
-@extends('backend.main')
+@extends('backend.layouts.main')
 
 @section('content')
     <section id="content">
         <div class="content-wrap">
             <div class="container clearfix">
-                <div class="heading-block center">
-                    <h1><i class="icon-film"></i></h1>
-                    <span>We make it awesome!</span>
-                </div>
                 <div class="single-post nobottommargin">
                     <div id="comments" class="clearfix">
                         <div id="respond" class="clearfix">
@@ -67,5 +63,12 @@
             </div>
         </div>
     </section>
+@endsection
+@section('script')
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker({ dateFormat: "dd-mm-yy" });
+        } );
+    </script>
 @endsection
 
