@@ -10,7 +10,8 @@ return [
     'genre-name' => 'Tên thể loại',
     'genre-edit-page' => 'Sửa Thể loại',
     'confirm-delete' => 'Bạn có muốn xóa nó?',
-    'name' => "Tên",
+    'name' => 'Tên',
     'action' => 'Thao tác',
     'stt' => 'Số thứ tự',
+    'avatar' => 'Avatar',
 ];

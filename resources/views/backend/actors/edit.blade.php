@@ -11,8 +11,9 @@
                 <div class="single-post nobottommargin">
                     <div id="comments" class="clearfix">
                         <div id="respond" class="clearfix">
-                            <h3>{!! __('Create an').' ' !!}<span>{!! __('Actor') !!}</span></h3>
-                            {!! Form::open(['route' => ['actors.store'], 'method' => 'post', 'class' => 'clearfix', 'id' => 'commentform', 'enctype' => 'multipart/form-data']) !!}
+                            <h3>{!! __('Edit an').' ' !!}<span>{!! __('Actor') !!}</span></h3>
+                            {!! Form::open(['route' => ['actors.update', $actor->id], 'method' => 'put',
+                            'class' => 'clearfix', 'id' => 'commentform', 'enctype' => 'multipart/form-data']) !!}
                             @foreach ($errors->all() as $error)
                                 <p class="alert alert-danger">{{ $error }}</p>
                             @endforeach
@@ -25,21 +26,22 @@
                             <div class="row">
                                 <div class="col_one_third">
                                     {!! Form::label(__('Name')) !!}
-                                    {!! Form::text('name', null, ['class' => 'sm-form-control']) !!}
+                                    {!! Form::text('name', $actor->name, ['class' => 'sm-form-control']) !!}
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col_one_sixth">
                                     {!! Form::label(__('Date of birth')) !!}
-                                    {!! Form::text('birthday', null, ['class' => 'sm-form-control', 'id' => 'datepicker', 'autocomplete' => 'off']) !!}
+                                    {!! Form::text('birthday', date_format(date_create($actor->birthday), "d-m-Y"),
+                                    ['class' => 'sm-form-control', 'id' => 'datepicker', 'autocomplete' => 'off']) !!}
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col_one_third">
                                     {!! Form::label(__('Country')) !!}
-                                    {!! Form::text('country', null, ['class' => 'sm-form-control']) !!}
+                                    {!! Form::text('country', $actor->country_id, ['class' => 'sm-form-control']) !!}
                                 </div>
                             </div>
 
@@ -54,7 +56,8 @@
                             <div class="row">
                                 <div class="col_full">
                                     {!! Form::label(__('Information').':') !!}
-                                    {!! Form::textarea('information', null, array('class' => 'sm-form-control', 'cols' => 58, 'rows' => 7, 'id' => 'ckeditor')) !!}
+                                    {!! Form::textarea('information', null, array('class' => 'sm-form-control',
+                                    'cols' => 58, 'rows' => 7, 'id' => 'ckeditor')) !!}
                                 </div>
                             </div>
                             <div class="col_full nobottommargin">
@@ -68,4 +71,3 @@
         </div>
     </section>
 @endsection
-

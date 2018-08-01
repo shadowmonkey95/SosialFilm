@@ -23,9 +23,14 @@
     "Create a": "Tạo",
     "Create an": "Tạo",
     "Edit a": "Sửa",
+    "Edit an": "Sửa",
     "Date of birth": "Ngày sinh",
     "Actor": "diễn viên",
     "Information": "Thông tin",
     "Country": "Quốc gia",
-    "Avatar": "Ảnh đại diện"
+    "Avatar": "Avatar",
+    "ID": "STT",
+    "Create an actor": "Tạo diễn viên",
+    "Actor list": "Danh sách diễn viên",
+    "Actor has been created": "Tạo diễn viên thành công"
 }

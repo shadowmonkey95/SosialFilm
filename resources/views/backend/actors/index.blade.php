@@ -4,7 +4,7 @@
 
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">{{ trans('message.genre-list') }}</h3>
+            <h3 class="panel-title">{{ __('Actor list') }}</h3>
         </div>
 
         @if ($errors->any())
@@ -27,17 +27,22 @@
             <table class="table table-striped table-bordered table-hover" id="dataTables">
                 <thead>
                 <tr align="center">
-                    <th>{{ trans('message.stt') }}</th>
-                    <th>{{ trans('message.name') }}</th>
-                    <th>{{ trans('message.action') }}</th>
+                    <th>{{ __('ID') }}</th>
+                    <th>{{ __('Name') }}</th>
+                    <th>{{ __('Date of birth') }}</th>
+                    <th>{{ __('Information') }}</th>
+                    <th>{{ __('Avatar') }}</th>
                 </tr>
                 </thead>
                 <tbody>
                 @php ($stt=1)
-                    @foreach ($genres as $cal)
+                    @foreach ($actors as $cal)
                         <tr class="odd gradeX" align="center">
                             <td>{{ $stt++ }}</td>
                             <td>{{ $cal->name }}</td>
+                            <td>{{ date_format(date_create($cal->birthday), "d-m-Y") }}</td>
+                            <td>{!! $cal->infor !!}</td>
+                            <td><div><img src="{{ asset($cal->avarta) }}" /></div></td>
                             <td class="text-center">
                                 {{ Form::open(['method' =>'GET', 'route' => ['actors.edit', $cal->id],'class' => 'form-update']) }}
                                 {{ Form::submit('Edit', ['class' => 'btn btn-info']) }}
@@ -50,7 +55,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <a href="{{ route('genres.create') }}" class="btn btn-primary">{{ trans('message.add-genre') }}</a>
+            <a href="{{ route('actors.create') }}" class="btn btn-primary">{{ __('Create an actor') }}</a>
         </div>
     </div>
 @endsection
