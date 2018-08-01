@@ -12,7 +12,7 @@ return [
     'confirm-delete' => 'Want to delete?',
     'name' => 'name',
     'action' => 'action',
-    'stt' => 'namber order',
+    'stt' => 'number order',
     'avatar' => 'avatar',
     'manager' => 'Manager page | Mrso',
     'homepage' => 'Homepage',
