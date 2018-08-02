@@ -36,11 +36,11 @@ class ActorController extends Controller
             $name = $slug . '_' . $file->getClientOriginalName();
             $file->move(public_path() . '/images/actors/', $name);
             $data['avarta'] = '/images/actors/' . $name;
-            $imagePath = public_path().'/images/actors/'.$name;
+            $imagePath = public_path() . '/images/actors/' . $name;
             Image::make($imagePath)->resize(250, 250)->save();
         } else {
             $data['avarta'] = '/images/actors/default-actor-avatar.png';
-            $imagePath = public_path().'/images/actors/default-actor-avatar.png';
+            $imagePath = public_path() . '/images/actors/default-actor-avatar.png';
             Image::make($imagePath)->resize(250, 250)->save();
         }
         Actor::create($data);
@@ -74,7 +74,7 @@ class ActorController extends Controller
             $name = $slug . '_' . $file->getClientOriginalName();
             $file->move(public_path() . '/images/actors/', $name);
             $data['avarta'] = '/images/actors/' . $name;
-            $imagePath = public_path().'/images/actors/'.$name;
+            $imagePath = public_path() . '/images/actors/' . $name;
             $image = Image::make($imagePath)->resize(250, 250)->save();
             $actor->avarta = $data['avarta'];
         }
