@@ -44,11 +44,11 @@
                             <td>{!! $cal->infor !!}</td>
                             <td><div><img src="{{ asset($cal->avarta) }}" /></div></td>
                             <td class="text-center">
-                                {{ Form::open(['method' =>'GET', 'route' => ['actors.edit', $cal->id],'class' => 'form-update']) }}
-                                {{ Form::submit('Edit', ['class' => 'btn btn-info']) }}
+                                {{ Form::open(['method' => 'GET', 'route' => ['actors.edit', $cal->id], 'class' => 'form-update']) }}
+                                {{ Form::submit(__('Edit'), ['class' => 'btn btn-info']) }}
                                 {{ Form::close() }}
-                                {{ Form::open(['method' => 'delete','route' => ['actors.destroy', $cal->id], 'class' => 'form-delete', 'onsubmit' =>  'return xacnhanxoa("' . trans('message.confirm-delete') . '")']) }}
-                                {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                                {{ Form::open(['method' => 'delete', 'route' => ['actors.destroy', $cal->id], 'class' => 'form-delete', 'onsubmit' =>  'return xacnhanxoa("' . trans('message.confirm-delete') . '")']) }}
+                                {{ Form::submit(__('Delete'), ['class' => 'btn btn-danger']) }}
                                 {{ Form::close() }}
                             </td>
                         </tr>
@@ -66,8 +66,8 @@
                 'order': [[ 0, 'desc' ]],
             });
         });
-        function xacnhanxoa(msg){
-            if(window.confirm(msg)){
+        function xacnhanxoa(msg) {
+            if (window.confirm(msg)) {
                 return true;
             }
             return  false;

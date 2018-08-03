@@ -7,7 +7,7 @@
                 <div class="single-post nobottommargin">
                     <div id="comments" class="clearfix">
                         <div id="respond" class="clearfix">
-                            <h3>{!! __('Create an').' ' !!}<span>{!! __('Actor') !!}</span></h3>
+                            <h3>{!! __('Create an') . ' ' !!}<span>{!! __('Actor') !!}</span></h3>
                             {!! Form::open(['route' => ['actors.store'], 'method' => 'post', 'class' => 'clearfix', 'id' => 'commentform', 'enctype' => 'multipart/form-data']) !!}
                             @foreach ($errors->all() as $error)
                                 <p class="alert alert-danger">{{ $error }}</p>
@@ -49,7 +49,7 @@
                             <div class="clear"></div>
                             <div class="row">
                                 <div class="col_full">
-                                    {!! Form::label(__('Information').':') !!}
+                                    {!! Form::label(__('Information')) !!}
                                     {!! Form::textarea('information', null, array('class' => 'sm-form-control', 'cols' => 58, 'rows' => 7, 'id' => 'ckeditor')) !!}
                                 </div>
                             </div>
