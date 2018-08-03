@@ -17,27 +17,32 @@ class SocialAuthController extends Controller
 
     public function getFacebookCallback()
     {
-        $data = Socialite::driver('facebook')->user();
-        $user = User::where('email', $data->email)->first();
+//        $data = Socialite::driver('facebook')->user();
+//        $user = User::where('email', $data->email)->first();
+//
+//        if (!is_null($user)) {
+//            Auth::login($user);
+//            $user->name = $data->user['name'];
+//            $user->facebook_id = $data->id;
+//            $user->save();
+//        } else {
+//            $user = User::where('facebook_id', $data->id)->first();
+//            if (is_null($user)) {
+//                // Create a new user
+//                $user = new User();
+//                $user->name = $data->user['name'];
+//                $user->email = $data->email;
+//                $user->facebook_id = $data->id;
+//                $user->save();
+//            }
+//
+//            Auth::login($user);
+//        }
+//        return redirect('/')->with('success', 'Successfully logged in!');
+        $user = Socialite::driver('facebook')->user();
 
-        if (!is_null($user)) {
-            Auth::login($user);
-            $user->name = $data->user['name'];
-            $user->facebook_id = $data->id;
-            $user->save();
-        } else {
-            $user = User::where('facebook_id', $data->id)->first();
-            if (is_null($user)) {
-                // Create a new user
-                $user = new User();
-                $user->name = $data->user['name'];
-                $user->email = $data->email;
-                $user->facebook_id = $data->id;
-                $user->save();
-            }
-
-            Auth::login($user);
-        }
-        return redirect('/')->with('success', 'Successfully logged in!');
+        $authUser = $this->findOrCreateUser($user, 'facebook');
+        Auth::login($authUser, true);
+        return redirect($this->redirectTo);
     }
 }
