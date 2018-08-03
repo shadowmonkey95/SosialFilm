@@ -20,8 +20,8 @@ Route::group(['middleware' => 'auth'], function () {
     ]);
 });
 
-Route::get('login/facebook', 'Auth\AuthController@redirectToFacebook');
-Route::get('login/facebook/callback', 'Auth\AuthController@getFacebookCallback');
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 
 Auth::routes();
 
