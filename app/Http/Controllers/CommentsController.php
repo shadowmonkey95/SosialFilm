@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Comment;
 use App\Review;
@@ -15,8 +16,16 @@ class CommentsController extends Controller
         $review = Review::find($request->get('review_id'));
         $review->comments()->save($comment);
 
-        return back();
+//        return back();
 //        return response()->json(['success' => 'Data is successfully added']);
+//        $html = view('partials.comment_replies', compact('comment'))->render();
+        $html = view('partials._comment_replies', [
+                'comments' => $review->comments,
+                'review_id' => $request->get('review_id'),
+                ]);
+//        return var_dump($html);
+
+        return $html;
     }
     public function replyStore(Request $request)
     {
