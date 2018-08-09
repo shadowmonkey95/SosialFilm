@@ -9,6 +9,7 @@ use App\Movie;
 use App\User;
 use App\Like;
 use Auth;
+use App\Comment;
 
 class ReviewsController extends Controller
 {

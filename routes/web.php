@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth'], function () {
     ]);
     Route::post('comment/store', 'CommentsController@store')->name('comment.add');
     Route::post('reply/store', 'CommentsController@replyStore')->name('reply.add');
+    Route::post('comment/fetch', 'CommentsController@fetch')->name('comment.fetch');
 });
 
 Auth::routes();
