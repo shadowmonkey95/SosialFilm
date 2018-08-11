@@ -41,11 +41,16 @@ class ReviewsController extends Controller
         $review = Review::findOrFail($id);
         $movie = Movie::findOrFail($review->movie_id);
         $username = User::findOrFail($review->user_id)->name;
-        $loggedInUser = Auth::user()->id;
-        $like = Like::where('review_id', '=', $review->id)->count();
-        $likeUser = Like::where(['user_id' => $loggedInUser, 'review_id' => $id])->first();
-
-        return view('reviews.show', compact('review', 'movie', 'username', 'like', 'likeUser'));
+        if (Auth::user()) {
+            $loggedInUser = Auth::user()->id;
+            $like = Like::where('review_id', '=', $review->id)->count();
+            $likeUser = Like::where(['user_id' => $loggedInUser, 'review_id' => $id])->first();
+            return view('reviews.show', compact('review', 'movie', 'username', 'like', 'likeUser'));
+        } else {
+            $like = Like::where('review_id', '=', $review->id)->count();
+            $likeUser = 0;
+            return view('reviews.show', compact('review', 'movie', 'username', 'like', 'likeUser'));
+        }
     }
 
     public function edit($id)

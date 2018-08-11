@@ -14,14 +14,17 @@
 Route::get('/', 'PagesController@welcome');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resources([
-        'reviews' => 'ReviewsController',
-        'profile' => 'ProfileController',
-    ]);
+//    Route::resources([
+//        'reviews' => 'ReviewsController',
+//        'profile' => 'ProfileController',
+//    ]);
+    Route::resource('profile', 'ProfileController');
+    Route::resource('reviews', 'ReviewsController', ['except' => ['show']]);
     Route::post('comment/store', 'CommentsController@store')->name('comment.add');
     Route::post('reply/store', 'CommentsController@replyStore')->name('reply.add');
-    Route::post('comment/fetch', 'CommentsController@fetch')->name('comment.fetch');
 });
+Route::get('reviews/{review}', 'ReviewsController@show')->name('reviews.show');
+Route::post('comment/fetch', 'CommentsController@fetch')->name('comment.fetch');
 
 Auth::routes();
 

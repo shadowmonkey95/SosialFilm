@@ -562,17 +562,19 @@
     {{--</footer>--}}
 
     {{--<div id="gotoTop" class="icon-angle-up"></div>--}}
+    <div id="display_comment"></div>
     <div class="container">
         {{ Form::open(['method' => 'POST', 'id' => 'comment_form', 'route' => 'comment.add']) }}
         <div class="form-group">
-            {{ Form::text('comment_content', null, ['id' => 'comment_content', 'class' => 'form-control', 'placeholder' => 'Enter comment', 'rows' => '5']) }}
+            {{ Form::text('comment_content', null, ['id' => 'comment_content', 'class' => 'form-control', 'placeholder' => 'Enter comment', 'rows' => '5', 'onfocus' => 'this.value=\'\'']) }}
+            {{ Form::hidden('comment_id', 0, ['id' => 'comment_id']) }}
             {{ Form::hidden('review_id', $review->id), ['id' => 'review_id'] }}
             {{ Form::submit( __('Submit'), ['name' => 'submit', 'id' => 'submit', 'class' => 'btn btn-info']) }}
         </div>
         {{ Form::close() }}
         <span id="comment_message"></span>
         <br />
-        <div id="display_comment"></div>
+
     </div>
 
     {{--<div class="container">--}}
@@ -655,10 +657,11 @@
                     //     $('#comment_form')[0].reset();
                     //     $('#comment_message').html(data.error);
                     // }
+                    // $('#display_comment').html(data);
                     console.log(data);
+                    load_comment();
                 }
             })
-            
         });
         load_comment();
 
@@ -680,11 +683,18 @@
                 success: function(data)
                 {
                     // $('#display_comment').html(data);
-                    console.log(data);
+                    $('#display_comment').html(data);
+                    // console.log(data);
                 }
             })
 
         }
+
+        $(document).on('click', '.reply', function(){
+            var comment_id = $(this).attr('id');
+            $('#comment_id').val(comment_id);
+            $('#comment_content').focus();
+        });
         
-    })
+    });
 </script>
