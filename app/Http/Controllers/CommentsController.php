@@ -18,14 +18,12 @@ class CommentsController extends Controller
     public function store(Request $request)
     {
         if (Auth::check()) {
-//            Event::fire(new Events\StatusLiked('Someone'));
             $data['content'] = $request->get('content');
             $data['is_reply_to'] = $request->get('is_reply_to');
             $data['review_id'] = $request->get('review_id');
             $data['user_id'] = Auth::user()->id;
             $comment = Comment::create($data);
             event(new Commented($comment));
-
             $data_noti['from_user_id'] = User::findOrFail($data['user_id'])->id;
             $data_noti['read'] = 0;
             $data_noti['click'] = 0;
@@ -38,7 +36,6 @@ class CommentsController extends Controller
                 $data_noti['type'] = 'replied';
                 $data_noti['type_id'] = $data['is_reply_to'];
             }
-
             if ($data_noti['from_user_id'] != $data_noti['to_user_id']) {
                 $noti = Notification::create($data_noti);
                 event(new ReviewCommented($noti->id));

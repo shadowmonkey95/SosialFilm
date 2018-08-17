@@ -19,9 +19,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('profile', 'ProfileController');
     Route::resource('reviews', 'ReviewsController', ['except' => ['show']]);
     Route::post('comment/store', 'CommentsController@store')->name('comment.add');
-//    Route::post('comment/store', function () {
-//        return '111';
-//    })->name('comment.add');
     Route::post('reply/store', 'CommentsController@replyStore')->name('reply.add');
     Route::post('notification/fetch_noti_count', 'NotificationsController@fetch_noti_count')
         ->name('notification.fetch_noti_count');

@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Review;
 use App\Notification;
@@ -9,7 +7,6 @@ use App\User;
 use App\Like;
 use Auth;
 use Carbon\Carbon;
-
 class NotificationsController extends Controller
 {
     public function fetch_noti_count()

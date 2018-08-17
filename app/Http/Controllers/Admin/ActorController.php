@@ -39,8 +39,8 @@ class ActorController extends Controller
             $imagePath = public_path() . '/images/actors/' . $name;
             Image::make($imagePath)->resize(250, 250)->save();
         } else {
-            $data['avarta'] = '/images/actors/default-actor-avatar.png';
-            $imagePath = public_path() . '/images/actors/default-actor-avatar.png';
+            $data['avarta'] = '/images/actors/default-avatar.png';
+            $imagePath = public_path() . '/images/actors/default-avatar.png';
             Image::make($imagePath)->resize(250, 250)->save();
         }
         Actor::create($data);
