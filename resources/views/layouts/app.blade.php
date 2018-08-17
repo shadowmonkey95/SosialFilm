@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('css/magnific-popup.css' ) }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-notifications.min.css') }}" type="text/css">
     <link href="{{ asset('bower_components/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('bower_components/Font-Awesome/web-fonts-with-css/css/fontawesome-all.min.css') }}">
 </head>
@@ -37,6 +38,54 @@
             filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
             filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
         };
+    </script>
+    {{--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>--}}
+    <script src="//js.pusher.com/3.1/pusher.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            fetch_noti();
+            function fetch_noti()
+            {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: "{{ url('notification/fetch_noti') }}",
+                    method: 'POST',
+                    dataType: 'JSON',
+                    success: function(data)
+                    {
+                        console.log(data);
+                        $('#noti-count').html(data);
+                    }
+                })
+            }
+        });
+    </script>
+    <script type="text/javascript">
+
+
+        // Enable pusher logging - don't include this in production
+        // $('#noti-count').html(data['count']);
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('95e81a3735519aedc60a', {
+            encrypted: true,
+            cluster: 'ap1',
+        });
+
+        // Subscribe to the channel we specified in our Laravel Event
+        var channel = pusher.subscribe('review-commented');
+
+        // Bind a function to a Event (the full Laravel class)
+        channel.bind('App\\Events\\ReviewCommented', function(data) {
+            console.log(data['count']);
+            $('#noti-count').html(data['count']);
+            $('#noti-list').append(data['message']);
+
+        });
     </script>
     @yield('script')
 </body>

@@ -590,6 +590,7 @@
                     }
                 })
             });
+            
             $('#reply_submit').on('submit', function(event) {
                 event.preventDefault();
                 $.ajax({

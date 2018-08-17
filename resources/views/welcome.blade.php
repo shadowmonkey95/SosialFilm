@@ -77,10 +77,10 @@
     });
 
     // Subscribe to the channel we specified in our Laravel Event
-    var channel = pusher.subscribe('status-liked');
+    var channel = pusher.subscribe('review-commented');
 
     // Bind a function to a Event (the full Laravel class)
-    channel.bind('App\\Events\\StatusLiked', function(data) {
+    channel.bind('App\\Events\\ReviewCommented', function(data) {
         var existingNotifications = notifications.html();
         var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
         var newNotificationHtml = `

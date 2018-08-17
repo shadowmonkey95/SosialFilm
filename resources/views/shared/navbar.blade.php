@@ -70,36 +70,29 @@
 
 
                 <div id="top-cart">
-                    <a href="#" id="top-cart-trigger"><i class="fas fa-bell"></i><span>5</span></a>
+                    <a href="#" id="top-cart-trigger"><i class="fas fa-bell"></i><span id="noti-count"></span></a>
                     <div class="top-cart-content">
-                        <div class="top-cart-title">
-                            <h4>Shopping Cart</h4>
-                        </div>
-                        <div class="top-cart-items">
-                            <div class="top-cart-item clearfix">
-                                <div class="top-cart-item-image">
-                                    <a href="#"><img src="#" alt="Blue Round-Neck Tshirt"/></a>
-                                </div>
-                                <div class="top-cart-item-desc">
-                                    <a href="#">Blue Round-Neck Tshirt</a>
-                                    <span class="top-cart-item-price">$19.99</span>
-                                    <span class="top-cart-item-quantity">x 2</span>
-                                </div>
-                            </div>
-                            <div class="top-cart-item clearfix">
-                                <div class="top-cart-item-image">
-                                    <a href="#"><img src="#" alt="Light Blue Denim Dress"/></a>
-                                </div>
-                                <div class="top-cart-item-desc">
-                                    <a href="#">Light Blue Denim Dress</a>
-                                    <span class="top-cart-item-price">$24.99</span>
-                                    <span class="top-cart-item-quantity">x 3</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="top-cart-action clearfix">
-                            <span class="fleft top-checkout-price">$114.95</span>
-                            <button class="button button-3d button-small nomargin fright">View Cart</button>
+                        <div class="top-cart-items" id="noti-list">
+                            {{--<div class="top-cart-item clearfix">--}}
+                                {{--<div class="top-cart-item-image">--}}
+                                    {{--<a href="#"><img src="#" alt="Blue Round-Neck Tshirt"/></a>--}}
+                                {{--</div>--}}
+                                {{--<div class="top-cart-item-desc">--}}
+                                    {{--<a href="#">Blue Round-Neck Tshirt</a>--}}
+                                    {{--<span class="top-cart-item-price">$19.99</span>--}}
+                                    {{--<span class="top-cart-item-quantity">x 2</span>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="top-cart-item clearfix">--}}
+                                {{--<div class="top-cart-item-image">--}}
+                                    {{--<a href="#"><img src="#" alt="Light Blue Denim Dress"/></a>--}}
+                                {{--</div>--}}
+                                {{--<div class="top-cart-item-desc">--}}
+                                    {{--<a href="#">Light Blue Denim Dress</a>--}}
+                                    {{--<span class="top-cart-item-price">$24.99</span>--}}
+                                    {{--<span class="top-cart-item-quantity">x 3</span>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                         </div>
                     </div>
                 </div>
@@ -114,3 +107,42 @@
         </div>
     </div>
 </header>
+{{--<nav class="navbar navbar-inverse">--}}
+    {{--<div class="container-fluid">--}}
+        {{--<div class="navbar-header">--}}
+            {{--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">--}}
+                {{--<span class="sr-only">Toggle navigation</span>--}}
+                {{--<span class="icon-bar"></span>--}}
+                {{--<span class="icon-bar"></span>--}}
+                {{--<span class="icon-bar"></span>--}}
+            {{--</button>--}}
+            {{--<a class="navbar-brand" href="#">Demo App</a>--}}
+        {{--</div>--}}
+
+        {{--<div class="collapse navbar-collapse">--}}
+            {{--<ul class="nav navbar-nav">--}}
+                {{--<li class="dropdown dropdown-notifications">--}}
+                    {{--<a href="#notifications-panel" class="dropdown-toggle" data-toggle="dropdown">--}}
+                        {{--<i data-count="0" class="glyphicon glyphicon-bell notification-icon"></i>--}}
+                    {{--</a>--}}
+
+                    {{--<div class="dropdown-container">--}}
+                        {{--<div class="dropdown-toolbar">--}}
+                            {{--<div class="dropdown-toolbar-actions">--}}
+                                {{--<a href="#">Mark all as read</a>--}}
+                            {{--</div>--}}
+                            {{--<h3 class="dropdown-toolbar-title">Notifications (<span class="notif-count">0</span>)</h3>--}}
+                        {{--</div>--}}
+                        {{--<ul class="dropdown-menu">--}}
+                        {{--</ul>--}}
+                        {{--<div class="dropdown-footer text-center">--}}
+                            {{--<a href="#">View All</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</li>--}}
+                {{--<li><a href="#">Timeline</a></li>--}}
+                {{--<li><a href="#">Friends</a></li>--}}
+            {{--</ul>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</nav>--}}
