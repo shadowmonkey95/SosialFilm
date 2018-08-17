@@ -12,12 +12,16 @@
 */
 
 Route::get('/', 'PagesController@welcome');
+//Route::get('/', 'PagesController@welcome2');
 Route::get('/loadMore', 'PagesController@ajaxLoadMore');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('profile', 'ProfileController');
     Route::resource('reviews', 'ReviewsController', ['except' => ['show']]);
     Route::post('comment/store', 'CommentsController@store')->name('comment.add');
+//    Route::post('comment/store', function () {
+//        return '111';
+//    })->name('comment.add');
     Route::post('reply/store', 'CommentsController@replyStore')->name('reply.add');
 });
 Route::get('reviews/{review}', 'ReviewsController@show')->name('reviews.show');
@@ -49,3 +53,8 @@ Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@
 Route::get('login/facebook', 'Auth\LoginController@redirectToFacebook')->name('login.facebook');
 Route::get('login/facebook/callback', 'Auth\LoginController@getFacebookCallback');
 Route::get('/like/{id}', 'ReviewsController@like')->name('like');
+
+Route::get('test', function () {
+    event(new App\Events\StatusLiked('Someone'));
+    return "Event has been sent!";
+});

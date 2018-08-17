@@ -67,4 +67,9 @@ class PagesController extends Controller
 
         return $arr;
     }
+
+    public function welcome2()
+    {
+        return view('welcome');
+    }
 }

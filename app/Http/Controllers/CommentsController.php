@@ -9,12 +9,17 @@ use App\Review;
 use App\User;
 use Auth;
 use Carbon\Carbon;
+use App\Events;
 
 class CommentsController extends Controller
 {
     public function store(Request $request)
     {
+        event(new StatusLiked('Someone'));
+//        Event::fire(new StatusLiked('Someone'));
+        return '1';
         if (Auth::check()) {
+//            Event::fire(new Events\StatusLiked('Someone'));
             $data['content'] = $request->get('content');
             $data['is_reply_to'] = $request->get('is_reply_to');
             $data['review_id'] = $request->get('review_id');
