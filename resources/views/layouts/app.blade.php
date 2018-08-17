@@ -63,7 +63,6 @@
                     }
                 })
             }
-
             function fetch_noti_list() {
                 var i;
                 var content = '';
@@ -88,19 +87,33 @@
                                 content = ' on your review';
                             }
                             html = '<li class="headerNotify_item">' +
-                                        '<div class="headerNotify_block-img">' +
-                                            '<img class="headerNotify_pic" src="' + data[i][5] + '">' +
-                                        '</div>' +
-                                        '<div class="headerNotify_block-txt">' +
-                                            '<em class="headerNotify_em">' + data[i][0] + '</em>' + ' ' + data[i][1] + content +
-                                        '</div>' +
-                                        '<div class="headerNotify_block-time">' + data[i][3] + ' ' + data[i][4] + ' ago' +
-                                    '</li>';
+                                '<div class="headerNotify_block-img">' +
+                                '<img class="headerNotify_pic" src="' + data[i][5] + '">' +
+                                '</div>' +
+                                '<div class="headerNotify_block-txt">' +
+                                '<em class="headerNotify_em">' + data[i][0] + '</em>' + ' ' + data[i][1] + content +
+                                '</div>' +
+                                '<div class="headerNotify_block-time">' + data[i][3] + ' ' + data[i][4] + ' ago' +
+                                '</li>';
                             $('#noti-list').append(html);
                         }
                     }
                 })
             }
+            $('#top-cart-trigger').click( function(e) {
+                console.log('da click');
+                e.preventDefault();
+                $.ajax({
+                    url: "{{ url('notification/read') }}",
+                    method: 'POST',
+                    dataType: 'JSON',
+                    success: function(data)
+                    {
+                        // $('#noti-count').html("0");
+                    }
+                })
+                $('#noti-count').html("0");
+            });
         });
     </script>
 

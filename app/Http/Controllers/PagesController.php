@@ -73,5 +73,4 @@ class PagesController extends Controller
 
         return $arr;
     }
-
 }

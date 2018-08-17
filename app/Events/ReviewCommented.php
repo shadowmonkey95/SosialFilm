@@ -17,7 +17,6 @@ use Carbon\Carbon;
 class ReviewCommented implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
     public $from_user_name;
     public $type;
     public $type_id;
@@ -26,7 +25,6 @@ class ReviewCommented implements ShouldBroadcast
     public $avatar;
     public $count;
     public $to_user_id;
-
     public function __construct($id)
     {
         //0 = from_user_name
@@ -58,10 +56,9 @@ class ReviewCommented implements ShouldBroadcast
                 }
             }
         }
-        $this->count = Notification::where(['to_user_id' => $to_user_id])->count();
+        $this->count = Notification::where(['to_user_id' => $to_user_id])->where(['read' => 0])->count();
 //        $this->message  = $from_user_id.' '.$type.' on your review'.'</br>'.'<hr>';
     }
-
     /**
      * Get the channels the event should broadcast on.
      *

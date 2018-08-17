@@ -107,7 +107,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-group">
-                            {!! Form::label( trans('message.selectgenre')) !!}
+                            {!! Form::label( trans('message.selectcountry')) !!}
                             {!! Form::select('country_id',App\Country::getCountry(), null, [ 'class' => 'select2 sm-form-control fix-select',  'size' => '5']) !!}
                         </div>
                     </div>

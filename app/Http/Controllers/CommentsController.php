@@ -18,6 +18,7 @@ class CommentsController extends Controller
     public function store(Request $request)
     {
         if (Auth::check()) {
+//            Event::fire(new Events\StatusLiked('Someone'));
             $data['content'] = $request->get('content');
             $data['is_reply_to'] = $request->get('is_reply_to');
             $data['review_id'] = $request->get('review_id');

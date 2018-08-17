@@ -603,23 +603,19 @@
                 }
             })
         }
-
         Pusher.logToConsole = true;
         //▼Begin pusher for comment
         var commented_pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
             encrypted: true,
             cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
         });
-
         var channel = commented_pusher.subscribe('commented');
-
         channel.bind('App\\Events\\Commented', function(data) {
             // console.log(data);
             load_comment();
             load_reply();
         });
         //▲End pusher for comment
-
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -628,7 +624,6 @@
         $(document).ready(function() {
             load_comment();
             load_reply();
-
             $(document).on('submit','[id^="reply_form_"]', function(e){
                 e.preventDefault();
                 $.ajax({
@@ -643,7 +638,6 @@
                     }
                 })
             });
-
             $(document).on('submit','#comment_form', function(e){
                 e.preventDefault();
                 $.ajax({
@@ -658,7 +652,6 @@
                     }
                 })
             });
-
             $(document).on('click', '.icon-reply', function () {
                 var id = $(this).attr("id");
                 var review_id = window.location.pathname.split('/').slice(-1).pop();

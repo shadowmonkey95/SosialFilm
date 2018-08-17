@@ -12,17 +12,23 @@
 */
 
 Route::get('/', 'PagesController@welcome');
+//Route::get('/', 'PagesController@welcome2');
 Route::get('/loadMore', 'PagesController@ajaxLoadMore');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('profile', 'ProfileController');
     Route::resource('reviews', 'ReviewsController', ['except' => ['show']]);
     Route::post('comment/store', 'CommentsController@store')->name('comment.add');
+//    Route::post('comment/store', function () {
+//        return '111';
+//    })->name('comment.add');
     Route::post('reply/store', 'CommentsController@replyStore')->name('reply.add');
     Route::post('notification/fetch_noti_count', 'NotificationsController@fetch_noti_count')
         ->name('notification.fetch_noti_count');
     Route::post('notification/fetch_noti_list', 'NotificationsController@fetch_noti_list')
         ->name('notification.fetch_noti_list');
+    Route::post('notification/read', 'NotificationsController@read')
+        ->name('notification.read');
     Route::get('reviews/createId/{id}', 'ReviewsController@createId')->name('reviews.createId');
 });
 Route::get('reviews/{review}', 'ReviewsController@show')->name('reviews.show');
@@ -58,6 +64,7 @@ Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@
 Route::get('login/facebook', 'Auth\LoginController@redirectToFacebook')->name('login.facebook');
 Route::get('login/facebook/callback', 'Auth\LoginController@getFacebookCallback');
 Route::get('/like/{id}', 'ReviewsController@like')->name('like');
+
 Route::resource('moviedetails', 'MovieDetailController');
 Route::get('/search/name', 'ReviewsController@searchByName');
 Route::get('/search/movie', 'MovieDetailController@searchByName');
