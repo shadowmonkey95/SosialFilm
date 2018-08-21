@@ -23,6 +23,8 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('notification.fetch_noti_count');
     Route::post('notification/fetch_noti_list', 'NotificationsController@fetch_noti_list')
         ->name('notification.fetch_noti_list');
+    Route::post('notification/read', 'NotificationsController@read')
+        ->name('notification.read');
 });
 Route::get('reviews/{review}', 'ReviewsController@show')->name('reviews.show');
 Route::post('comment/fetch', 'CommentsController@fetch')->name('comment.fetch');

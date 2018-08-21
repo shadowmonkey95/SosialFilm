@@ -58,7 +58,7 @@ class ReviewCommented implements ShouldBroadcast
                 }
             }
         }
-        $this->count = Notification::where(['to_user_id' => $to_user_id])->count();
+        $this->count = Notification::where(['to_user_id' => $to_user_id])->where(['read' => 0])->count();
 //        $this->message  = $from_user_id.' '.$type.' on your review'.'</br>'.'<hr>';
     }
 

@@ -76,11 +76,10 @@
                 </ul>
 
                 <div id="top-cart">
-                    <a href="#" id="top-cart-trigger"><i class="fas fa-bell"></i><span id="noti-count"></span></a>
+                    <a id="top-cart-trigger"><i class="fas fa-bell"></i><span id="noti-count"></span></a>
                     <div class="top-cart-content">
                         <div class="top-cart-items">
                             <ul id="noti-list" class="headerNotify_content">
-
                             </ul>
                         </div>
                     </div>

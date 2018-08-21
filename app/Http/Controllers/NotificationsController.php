@@ -27,7 +27,7 @@ class NotificationsController extends Controller
         if (Auth::check()) {
             $result = [];
 //            $count = Notification::where(['to_user_id' => Auth::user()->id])->count();
-            $notifications = Notification::where(['to_user_id' => Auth::user()->id])->where(['read' => 0])
+            $notifications = Notification::where(['to_user_id' => Auth::user()->id])
                 ->orderBy('created_at', 'DESC')->get();
             foreach ($notifications as $noti) {
                 $tmp = [];
@@ -56,5 +56,12 @@ class NotificationsController extends Controller
             }
         }
         return $result;
+    }
+
+    public function read()
+    {
+        if (Auth::check()) {
+            Notification::where(['to_user_id' => Auth::user()->id])->where(['read' => 0])->update(['read' => 1]);
+        }
     }
 }

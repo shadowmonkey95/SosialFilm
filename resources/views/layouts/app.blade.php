@@ -101,6 +101,21 @@
                     }
                 })
             }
+
+            $('#top-cart-trigger').click( function(e) {
+                console.log('da click');
+                e.preventDefault();
+                $.ajax({
+                    url: "{{ url('notification/read') }}",
+                    method: 'POST',
+                    dataType: 'JSON',
+                    success: function(data)
+                    {
+                        // $('#noti-count').html("0");
+                    }
+                })
+                $('#noti-count').html("0");
+            });
         });
     </script>
 
