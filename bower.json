@@ -25,7 +25,8 @@
     "datatables": "https://github.com/DataTables/DataTables.git#^1.10.19",
     "linearicons": "https://github.com/cjpatoilo/linearicons.git",
     "jqueryui-datepicker": "^0.0.3",
-    "pusher-js": "pusher#^4.3.0"
+    "pusher-js": "pusher#^4.3.0",
+    "typeahead.js": "^0.11.1"
   },
   "devDependencies": {
     "lato-font": "^3.0.0"

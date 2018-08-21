@@ -12,13 +12,6 @@
 
             <nav id="primary-menu">
                 <ul>
-                    <div class="nav-avatar">
-                        {!! Form::open() !!}
-                            <input type="search" name="q" class=" alert alert-success search-input" value="" placeholder="{{trans('message.search')}}" size="35">
-                        {!! Form::close() !!}
-                    </div>
-                </ul>
-                <ul>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Language <span class="caret"></span>
@@ -89,7 +82,7 @@
                 <div id="top-search">
                     <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
                     {!! Form::open() !!}
-                    <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+                    <input type="text" name="q" class="form-control search-input" value="" placeholder="Type &amp; Hit Enter..">
                     {!! Form::close() !!}
                 </div>
                 @endguest

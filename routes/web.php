@@ -14,6 +14,7 @@
 Route::get('/', 'PagesController@welcome');
 //Route::get('/', 'PagesController@welcome2');
 Route::get('/loadMore', 'PagesController@ajaxLoadMore');
+Route::get('logout', 'Auth\LoginController@logout');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('profile', 'ProfileController');
