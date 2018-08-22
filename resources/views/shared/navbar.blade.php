@@ -88,7 +88,8 @@
                 @endguest
             </nav>
         </div>
-<div class="row justify-content-center">
+        {{-- filter --}}
+<div class="row justify-content-center hidden">
         <div class="container">
         {!! Form::open(['route' => 'moviefilter.search', 'id' => 'form-search']) !!}
             <div class="row">
