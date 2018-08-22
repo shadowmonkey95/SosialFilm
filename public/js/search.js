@@ -30,13 +30,13 @@ jQuery(document).ready(function($) {
             },
             templates: {
                 empty: [
-                    '<h4>Movies</h4><div class="list-group search-results-dropdown"><div class="list-group-item list-group-item-warning">Nothing found.</div></div>'
+                    '<h4 class="tt-movie">Movies</h4><div class="list-group search-results-dropdown"><div class="list-group-item list-group-item-warning">Nothing found.</div></div>'
                 ],
                 header: [
-                    '<h4>Movies</h4><div class="list-group search-results-dropdown"></div>'
+                    '<h4 class="tt-movie">Movies</h4><div class="list-group search-results-dropdown"></div>'
                 ],
                 suggestion: function (data) {
-                    return '<a href="/moviedetails/' + data.id + '" class="list-group-item list-group-item-info">' + data.title + '</a>';
+                    return '<a href="/moviedetails/' + data.id + '" class="list-group-item list-group-item-info tt-result w-100">' + data.title + '</a>';
                 }
             }
         },
@@ -48,13 +48,13 @@ jQuery(document).ready(function($) {
             },
             templates: {
                 empty: [
-                    '<h4>Reviews</h4><div class="list-group search-results-dropdown"><div class="list-group-item list-group-item-warning">Nothing found.</div></div>'
+                    '<h4 class="tt-movie">Reviews</h4><div class="list-group search-results-dropdown"><div class="list-group-item list-group-item-warning">Nothing found.</div></div>'
                 ],
                 header: [
-                    '<h4>Reviews</h4><div class="list-group search-results-dropdown"></div>'
+                    '<h4 class="tt-movie">Reviews</h4><div class="list-group search-results-dropdown"></div>'
                 ],
                 suggestion: function (data) {
-                    return '<a href="/reviews/' + data.id + '" class="list-group-item list-group-item-info">' + data.title + '</a>';
+                    return '<a href="/reviews/' + data.id + '" class="list-group-item list-group-item-info tt-result w-100">' + data.title + '</a>';
                 }
             }
         },
