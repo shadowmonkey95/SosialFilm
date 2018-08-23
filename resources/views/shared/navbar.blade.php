@@ -79,6 +79,16 @@
                     </div>
                 </div>
 
+                <div id="top-cart">
+                    <a id="top-cart-trigger" class="bach-filter"><i class="fas fa-filter"></i></a>
+                    <div class="top-cart-content">
+                    </div>
+                </div>
+
+                {{--<div class="filter-icon">--}}
+                    {{--<i class="fas fa-filter"></i>--}}
+                {{--</div>--}}
+
                 <div id="top-search">
                     <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
                     {!! Form::open() !!}
@@ -89,31 +99,31 @@
             </nav>
         </div>
         {{-- filter --}}
-<div class="row justify-content-center hidden">
-        <div class="container">
-        {!! Form::open(['route' => 'moviefilter.search', 'id' => 'form-search']) !!}
-            <div class="row">
-                    <div class="col-sm">
-                        <div class="form-group">
-                            {!! Form::label( trans('message.selectgenre')) !!}
-                            {!! Form::select('genre_id',App\Genre::getGenre(), null, [ 'class' => 'select2 sm-form-control fix-select',  'size' => '5']) !!}
-                        </div>
-                    </div>
-                    <div class="col-sm">
-                        <div class="form-group">
-                            {!! Form::label( trans('message.selectcountry')) !!}
-                            {!! Form::select('country_id',App\Country::getCountry(), null, [ 'class' => 'select2 sm-form-control fix-select',  'size' => '5']) !!}
-                        </div>
-                    </div>
-            <div class="col-sm">
-                      <div class="form-group">
-                        <br>
-                        {!! Form::submit(trans('message.search'), ['class' => 'btn btn-primary btn-search']) !!}
-                        {!! Form::close() !!}
-                </div>
-                </div>
-              </div>
-            </div>
-        </div>
-</div>
+        {{--<div id="bach-filter" class="row justify-content-center">--}}
+            {{--<div class="container row justify-content-center">--}}
+                {{--{!! Form::open(['route' => 'moviefilter.search', 'id' => 'form-search']) !!}--}}
+                {{--<div class="row">--}}
+                    {{--<div class="col-sm">--}}
+                        {{--<div class="form-group">--}}
+                            {{--{!! Form::label( trans('message.selectgenre')) !!}--}}
+                            {{--{!! Form::select('genre_id',App\Genre::getGenre(), null, [ 'class' => 'select2 sm-form-control fix-select',  'size' => '5']) !!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-sm">--}}
+                        {{--<div class="form-group">--}}
+                            {{--{!! Form::label( trans('message.selectcountry')) !!}--}}
+                            {{--{!! Form::select('country_id',App\Country::getCountry(), null, [ 'class' => 'select2 sm-form-control fix-select',  'size' => '5']) !!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-sm">--}}
+                        {{--<div class="form-group">--}}
+                            {{--<br>--}}
+                            {{--{!! Form::submit(trans('message.search'), ['class' => 'btn btn-primary btn-search']) !!}--}}
+                            {{--{!! Form::close() !!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    </div>
 </header>

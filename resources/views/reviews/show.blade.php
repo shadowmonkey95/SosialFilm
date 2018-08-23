@@ -23,7 +23,7 @@
                                 <li><i class="icon-calendar3"></i> {{ $review->created_at }}</li>
                                 <li><a href="#"><i class="icon-user"></i> {{ $username }}</a></li>
                                 <li><i class="fa fa-film"></i> <a href="{{ route('moviedetails.show', $movie->id) }}">{{ $movie->title }}</a></li>
-                                <li><a href="#"><i class="icon-comments"></i> 43 Comments</a></li>
+                                <li><a href="#"><i id="count-comments" class="icon-comments"></i></a></li>
                                 <li><a href="#"><i class="icon-like"></i> {{ $like }} Likes</a></li>
                             </ul>
                             <div class="entry-image">
@@ -537,6 +537,7 @@
                     //4 = avatar
                     console.log(data);
                     $('#comments-title').html('<span>'+ data.length + '</span> Comments');
+                    $('#count-comments').html(data.length + ' Comments');
                     for (i = 0; i < data.length; i++) {
                         html += '<li id="li-comment-' + data[i][3] + '">' +
                             '<div id="comment-' + data[i][3] + '" class="comment-wrap clearfix">' +

@@ -24,6 +24,33 @@
 <body class="stretched">
     <div id="wrapper" class="clearfix">
         @include('shared.navbar')
+        {{-- filter --}}
+        <div id="bach-filter" class="row justify-content-center">
+            <div class="container row justify-content-center">
+                {!! Form::open(['route' => 'moviefilter.search', 'id' => 'form-search']) !!}
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            {!! Form::label( trans('message.selectgenre')) !!}
+                            {!! Form::select('genre_id',App\Genre::getGenre(), null, [ 'class' => 'select2 sm-form-control fix-select',  'size' => '5']) !!}
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            {!! Form::label( trans('message.selectcountry')) !!}
+                            {!! Form::select('country_id',App\Country::getCountry(), null, [ 'class' => 'select2 sm-form-control fix-select',  'size' => '5']) !!}
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <br>
+                            {!! Form::submit(trans('message.search'), ['class' => 'btn btn-primary btn-search']) !!}
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         @yield('content')
     </div>
     <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
@@ -190,11 +217,20 @@
             }
         });
     </script>
-    
+
     <script >
         $(document).ready(function() {
             $('.select2').select2();
+            $('#bach-filter').addClass('hidden');
+            $('.bach-filter').click( function() {
+                $('#bach-filter').toggleClass('hidden');
+                $('#page-title').toggleClass('margin-top-85');
+            });
         });
+
+        // $('.bach-filter').click( function() {
+        //     $('#bach-filter').toggleClass('hidden');
+        // });
     </script>
     @yield('script')
 </body>
