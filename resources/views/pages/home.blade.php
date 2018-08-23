@@ -9,6 +9,7 @@
                     <span>{{ __('Caption') }}</span>
                 </div>
                 @if (count($arrMovies)<6)
+                    // It movie thi show duoi dang list
                     <div id="posts" class="post-grid grid-container grid-3 clearfix" data-layout="fitRows">
                         {{--Hot Films--}}
                         @foreach ($movies as $movie)
@@ -32,6 +33,7 @@
                         @endforeach
                     </div>
                 @else
+                    //Nhieu movie thi tao show thanh dang slide
                     <div id="carouselExampleIndicators" class="carousel slide margin-bottom-100" data-ride="carousel">
                         <div class="carousel-inner">
                             @for ($i = 0; $i < count($arrMovies); $i++)
@@ -72,13 +74,14 @@
                 </div>
                 <div id="posts" class="post-grid grid-container grid-3 clearfix" data-layout="fitRows">
                     {{--Hot Reviews--}}
+                    // 3 review moi nhat
                     @foreach ($reviews as $review)
                         <div class="entry clearfix">
                             <div class="entry-image">
                                 <a href="{{ $review->poster }}" data-lightbox="image"><img class="image_fade" src="{{ $review->poster }}" alt="Standard Post with Image"></a>
                             </div>
                             <div class="entry-title">
-                                <h2><a href="{!! route('reviews.show', 1) !!}">{{ $review->title }}</a></h2>
+                                <h2><a href="{!! route('reviews.show', $review->id) !!}">{{ $review->title }}</a></h2>
                             </div>
                             <ul class="entry-meta clearfix">
                                 <li><i class="icon-calendar3"></i> {{ $review->created_at }}</li>
@@ -94,13 +97,21 @@
                         </div>
                     @endforeach
 
+                    // 3 review co nhieu like nhat
+                    <?php $i = 0?>
                     @foreach ($sortReviews as $review)
+                        <?php
+                        $i++;
+                        if ($i>3) {
+                            break;
+                        }
+                        ?>
                         <div class="entry clearfix">
                             <div class="entry-image">
                                 <a href="{{ $review['poster'] }}" data-lightbox="image"><img class="image_fade" src="{{ $review['poster'] }}" alt="Standard Post with Image"></a>
                             </div>
                             <div class="entry-title">
-                                <h2><a href="{!! route('reviews.show', 1) !!}">{{ $review['title'] }}</a></h2>
+                                <h2><a href="{!! route('reviews.show', $review['id']) !!}">{{ $review['title'] }}</a></h2>
                             </div>
                             <ul class="entry-meta clearfix">
                                 <li><i class="icon-calendar3"></i> {{ $review['created_at'] }}</li>
@@ -167,7 +178,7 @@
                                     htmlResult += '<div class="entry clearfix">';
                                     htmlResult += '<div class="entry-image"><a href="' + item['poster'] + '" data-lightbox="image">';
                                     htmlResult += '<img class="image_fade" src="' + item['poster'] + '" alt="Standard Post with Image"></a></div>';
-                                    htmlResult += '<div class="entry-title"><h2><a href="#">' + item['title'] + '</a></h2></div>';
+                                    htmlResult += '<div class="entry-title"><h2><a href="/reviews/'+item['id']+'">' + item['title'] + '</a></h2></div>';
                                     htmlResult += '<ul class="entry-meta clearfix">';
                                     htmlResult += '<li><i class="icon-calendar3"></i>' + item['created_at'] + '</li>';
                                     htmlResult += '<li><a href="#"><i class="icon-comments"></i> 13</a></li>';
