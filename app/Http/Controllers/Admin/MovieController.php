@@ -17,11 +17,6 @@ use Intervention\Image\Facades\Image;
 
 class MovieController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
@@ -34,11 +29,6 @@ class MovieController extends Controller
         return view('backend.movies.list', compact('movies', 'genres', 'actors'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $actors = Actor::pluck('name', 'id');
@@ -48,12 +38,6 @@ class MovieController extends Controller
         return view('backend.movies.add', compact('actors', 'genre', 'countries'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(MovieFormRequest $request)
     {
         //
@@ -66,7 +50,8 @@ class MovieController extends Controller
         $data['director'] = $request->get('director');
         $data['overview'] = $request->get('overview');
         $data['runtime'] = $request->get('runtime');
-        $data['trailer'] = $request->get('trailer');
+        $trailer = str_replace('watch?v=', 'embed/', $request->get('trailer'));
+        $data['trailer'] = $trailer;
         $data['imdb_score'] = $request->get('imdb_score');
         $slug = uniqid();
         if ($request->hasFile('image')) {
@@ -75,7 +60,7 @@ class MovieController extends Controller
             $file->move(public_path() . '/images/movies/', $name);
             $data['poster'] = '/images/movies/' . $name;
             $imagePath = public_path() . '/images/movies/' . $name;
-            Image::make($imagePath)->save();
+            Image::make($imagePath)->resize(1100, 700)->save();
         } else {
             $data['poster'] = 'null';
         }
@@ -96,48 +81,26 @@ class MovieController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $movie = Movie::findOrFail($id);
+        $movie->delete();
+
+        return redirect('/admin/movies')->with('success', __('The movie has been deleted'));
     }
 }

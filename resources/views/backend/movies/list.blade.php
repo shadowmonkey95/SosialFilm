@@ -42,7 +42,7 @@
                     @foreach ($movies as $cal)
                         <tr class="odd gradeX" align="center">
                             <td>{{ $stt++ }}</td>
-                            <td>{{ $cal->title }}</td>
+                            <td><a href="{{ route('moviedetails.show', $cal->id) }}">{{ $cal->title }}</a></td>
                             <td><div><img class = "img-movie" src="{{ asset($cal->poster) }}" /></div></td>
                             <td>{{ $cal->trailer }}</td>
                             <td>
