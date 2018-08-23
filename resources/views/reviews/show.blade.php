@@ -36,67 +36,67 @@
                                     @if (empty($likeUser))
                                         <div class="btn btn-outline-info clearfix bottommargin " id = "like-btn">
                                             <a href="{{ route('like', ['id' => $review->id]) }}">
-                                                <span class="fa fa-thumbs-up">{{ trans('message.like') }}</span>
+                                                <span id="like" class="fa fa-thumbs-up">{{ trans('message.like') }}</span>
                                             </a>
                                         </div>
                                     @else
                                         <div class=" clearfix bottommargin btn btn-outline-danger  " id = "like-btn">
                                             <a href="{{ route('like', ['id' => $review->id]) }}">
-                                                <span class="fa fa-thumbs-down">{{ trans('message.unlike') }}</span>
+                                                <span id="unlike" class="fa fa-thumbs-down">{{ trans('message.unlike') }}</span>
                                             </a>
                                         </div>
                                     @endif
                                 @else
-                                    <div class="btn btn-outline-info clearfix bottommargin " id = "like-btn">
-                                        <a href="">
-                                            <span class= "fa fa-thumbs-up">({{ $like }})</span>
-                                        </a>
-                                        <span> {{ trans('message.like') }}</span>
-                                    </div>
+                                    {{--<div class="btn btn-outline-info clearfix bottommargin " id = "like-btn">--}}
+                                        {{--<a href="">--}}
+                                            {{--<span class= "fa fa-thumbs-up">({{ $like }})</span>--}}
+                                        {{--</a>--}}
+                                        {{--<span> {{ trans('message.like') }}</span>--}}
+                                    {{--</div>--}}
                                     <div class="clearfix bottommargin alert alert-primary ">
                                         <span> {{ trans('message.likeforguest') }}</span>
                                     </div>
                                 @endif
-                                <div class="clear"></div>
+                                {{--<div class="clear"></div>--}}
 
-                                <div class="si-share noborder clearfix">
-                                    <span>Share this Post:</span>
-                                    <div>
-                                        <a href="#" class="social-icon si-borderless si-facebook">
-                                            <i class="icon-facebook"></i>
-                                            <i class="icon-facebook"></i>
-                                        </a>
-                                        <a href="#" class="social-icon si-borderless si-twitter">
-                                            <i class="icon-twitter"></i>
-                                            <i class="icon-twitter"></i>
-                                        </a>
-                                    </div>
-                                </div>
+                                {{--<div class="si-share noborder clearfix">--}}
+                                    {{--<span>Share this Post:</span>--}}
+                                    {{--<div>--}}
+                                        {{--<a href="#" class="social-icon si-borderless si-facebook">--}}
+                                            {{--<i class="icon-facebook"></i>--}}
+                                            {{--<i class="icon-facebook"></i>--}}
+                                        {{--</a>--}}
+                                        {{--<a href="#" class="social-icon si-borderless si-twitter">--}}
+                                            {{--<i class="icon-twitter"></i>--}}
+                                            {{--<i class="icon-twitter"></i>--}}
+                                        {{--</a>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                             </div>
                         </div>
 
-                        <div class="post-navigation clearfix">
-                            <div class="col_half nobottommargin">
-                                <a href="#">&lArr; This is a Standard post with a Slider Gallery</a>
-                            </div>
-                            <div class="col_half col_last tright nobottommargin">
-                                <a href="#">This is an Embedded Audio Post &rArr;</a>
-                            </div>
-                        </div>
-                        <div class="line"></div>
+                        {{--<div class="post-navigation clearfix">--}}
+                            {{--<div class="col_half nobottommargin">--}}
+                                {{--<a href="#">&lArr; This is a Standard post with a Slider Gallery</a>--}}
+                            {{--</div>--}}
+                            {{--<div class="col_half col_last tright nobottommargin">--}}
+                                {{--<a href="#">This is an Embedded Audio Post &rArr;</a>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="line"></div>--}}
 
-                        <div class="card">
-                            <div class="card-header"><strong>Posted by <a href="#">John Doe</a></strong></div>
-                            <div class="card-body">
-                                <div class="author-image">
-                                    <img src="images/author/1.jpg" alt="" class="rounded-circle">
-                                </div>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eveniet, eligendi et nobis neque minus mollitia sit repudiandae ad repellendus recusandae blanditiis praesentium vitae ab sint earum voluptate velit beatae alias fugit accusantium laboriosam nisi reiciendis deleniti tenetur molestiae maxime id quaerat consequatur fugiat aliquam laborum nam aliquid. Consectetur, perferendis?
-                            </div>
-                        </div>
-                        <div class="line"></div>
+                        {{--<div class="card">--}}
+                            {{--<div class="card-header"><strong>Posted by <a href="#">John Doe</a></strong></div>--}}
+                            {{--<div class="card-body">--}}
+                                {{--<div class="author-image">--}}
+                                    {{--<img src="images/author/1.jpg" alt="" class="rounded-circle">--}}
+                                {{--</div>--}}
+                                {{--Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eveniet, eligendi et nobis neque minus mollitia sit repudiandae ad repellendus recusandae blanditiis praesentium vitae ab sint earum voluptate velit beatae alias fugit accusantium laboriosam nisi reiciendis deleniti tenetur molestiae maxime id quaerat consequatur fugiat aliquam laborum nam aliquid. Consectetur, perferendis?--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="line"></div>--}}
                         {{--COMMENT BEGINS--}}
-                        <div id="comments" class="clearfix">
+                        {{--<div id="comments" class="clearfix">--}}
                             {{--<h3 id="comments-title"><span>3</span> Comments</h3>--}}
                             <h3 id="comments-title"></h3>
                             @if (Auth::check())
@@ -120,7 +120,7 @@
                             <ol class="commentlist clearfix" id="display-comment">
                             </ol>
                             <div class="clear"></div>
-                        </div>
+                        {{--</div>--}}
                     </div>
                 </div>
 
@@ -671,6 +671,27 @@
                 $('#display-reply-' + id).html(html).toggleClass('display-none');
                 $('.reply-box:not(#reply-content-' + id + ')').hide();
             });
+            {{--$(document).on('click', '#like', function (e) {--}}
+                {{--e.preventDefault();--}}
+                {{--$.ajax({--}}
+                    {{--url: "{{ route('like', ['id' => $review->id]) }}",--}}
+                    {{--method: 'POST',--}}
+                    {{--success: function(data) {--}}
+                        {{--console.log(data);--}}
+                    {{--}--}}
+                {{--})--}}
+            {{--});--}}
+
+            {{--$(document).on('click', '#unlike', function (e) {--}}
+                {{--e.preventDefault();--}}
+                {{--$.ajax({--}}
+                    {{--url: "{{ route('like', ['id' => $review->id]) }}",--}}
+                    {{--method: 'POST',--}}
+                    {{--success: function(data) {--}}
+                        {{--console.log(data);--}}
+                    {{--}--}}
+                {{--})--}}
+            {{--});--}}
         });
     </script>
 @endsection
