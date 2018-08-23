@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\GenreMovie;
-use App\ActorMovie;
+use App\Comment;
 use App\Genre;
 use App\Like;
 use App\Movie;
-use App\Review;
 use Illuminate\Http\Request;
 use DB;
-use Illuminate\Support\Facades\Config;
 
 class PagesController extends Controller
 {
@@ -26,8 +23,10 @@ class PagesController extends Controller
             ->orderBy('reviews.created_at', 'desc')
             ->take(3)->get();
         foreach ($reviews as $review) {
-            $like = Like::where('review_id', '=', $review->id)->count();
+            $like = Like::where('review_id', $review->id)->count();
             $review->like = $like;
+            $comment = Comment::where('review_id', $review->id)->count();
+            $review->comment = $comment;
         }
 
 //        Show ra cac review co thu tu nhieu like nhat
@@ -36,8 +35,10 @@ class PagesController extends Controller
             ->select('reviews.*', 'movies.poster')
             ->get();
         foreach ($allReviews as $review) {
-            $like = Like::where('review_id', '=', $review->id)->count();
+            $like = Like::where('review_id', $review->id)->count();
             $review->like = $like;
+            $comment = Comment::where('review_id', $review->id)->count();
+            $review->comment = $comment;
         }
 
         $sortReviews = json_decode(json_encode($allReviews), true);
@@ -65,8 +66,10 @@ class PagesController extends Controller
             ->limit($limit)
             ->get();
         foreach ($results as $review) {
-            $like = Like::where('review_id', '=', $review->id)->count();
+            $like = Like::where('review_id', $review->id)->count();
             $review->like = $like;
+            $comment = Comment::where('review_id', $review->id)->count();
+            $review->comment = $comment;
         }
         $arr = json_decode(json_encode($results), true);
 

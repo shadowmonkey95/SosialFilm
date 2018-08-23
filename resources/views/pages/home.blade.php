@@ -69,11 +69,11 @@
                 @endif
 
                 <div class="heading-block center">
-                    <h1>{{ __('Hot Reviews') }}</h1>
+                    <h1>{{ __('New Reviews') }}</h1>
                     <span>{{ __('Caption') }}</span>
                 </div>
                 <div id="posts" class="post-grid grid-container grid-3 clearfix" data-layout="fitRows">
-                    {{--Hot Reviews--}}
+                    {{--New Reviews--}}
                     // 3 review moi nhat
                     @foreach ($reviews as $review)
                         <div class="entry clearfix">
@@ -85,7 +85,7 @@
                             </div>
                             <ul class="entry-meta clearfix">
                                 <li><i class="icon-calendar3"></i> {{ $review->created_at }}</li>
-                                <li><a href="#"><i class="icon-comments"></i> 13</a></li>
+                                <li><a href="#"><i class="icon-comments"></i> {{ $review->comment }}</a></li>
                                 <li><a href="#"><i class="icon-like"></i> {{ $review->like }}</a></li>
                             </ul>
                             <div class="entry-content fixed-height">
@@ -96,7 +96,13 @@
                             </div>
                         </div>
                     @endforeach
+                </div>
 
+                <div class="heading-block center">
+                    <h1>{{ __('Hot Reviews') }}</h1>
+                    <span>{{ __('Caption') }}</span>
+                </div>
+                <div id="posts" class="post-grid grid-container grid-3 clearfix" data-layout="fitRows">
                     // 3 review co nhieu like nhat
                     <?php $i = 0?>
                     @foreach ($sortReviews as $review)
@@ -115,7 +121,7 @@
                             </div>
                             <ul class="entry-meta clearfix">
                                 <li><i class="icon-calendar3"></i> {{ $review['created_at'] }}</li>
-                                <li><a href="#"><i class="icon-comments"></i> 13</a></li>
+                                <li><a href="#"><i class="icon-comments"></i> {{ $review['comment'] }}</a></li>
                                 <li><a href="#"><i class="icon-like"></i> {{ $review['like'] }}</a></li>
                             </ul>
                             <div class="entry-content fixed-height">
@@ -181,7 +187,7 @@
                                     htmlResult += '<div class="entry-title"><h2><a href="/reviews/'+item['id']+'">' + item['title'] + '</a></h2></div>';
                                     htmlResult += '<ul class="entry-meta clearfix">';
                                     htmlResult += '<li><i class="icon-calendar3"></i>' + item['created_at'] + '</li>';
-                                    htmlResult += '<li><a href="#"><i class="icon-comments"></i> 13</a></li>';
+                                    htmlResult += '<li><a href="#"><i class="icon-comments"></i> ' + item['comment'] + '</a></li>';
                                     htmlResult += '<li><a href="#"><i class="icon-like"></i>' + item['like'] + '</a></li></ul>';
                                     htmlResult += '<div class="entry-content fixed-height"><p>' + str_limit(item['content']) + '</p>';
                                     htmlResult += '<a href="/reviews/' + item['id'] + '" class="more-link">{{ __('Read More') }}</a></div>';
