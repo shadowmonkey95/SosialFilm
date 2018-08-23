@@ -28,16 +28,18 @@
 }
 
 .headerNotify_item {
+    height: 80px;
     width: 320px;
     box-sizing: border-box;
     padding: 16px;
     border-bottom: dotted 1px;
-    background-color: lightgray;
+    /*background-color: lightgray;*/
+    background-color: #d3d3d3b0;
 }
 
 .headerNotify_content {
     border-bottom: 1px solid #e1e6e6;
-    min-height: 240px;
+    /*min-height: 240px;*/
     /*max-height: 80vh;*/
     overflow-y: scroll;
     overflow-x: hidden;
@@ -77,4 +79,8 @@
     color: #808080;
     margin-top: 8px;
     float: left;
+}
+
+.a-noti-list {
+    color: black;
 }

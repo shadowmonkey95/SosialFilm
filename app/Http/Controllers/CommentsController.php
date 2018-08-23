@@ -31,10 +31,12 @@ class CommentsController extends Controller
                 $data_noti['to_user_id'] = Review::findOrFail($data['review_id'])->user_id;
                 $data_noti['type'] = 'commented';
                 $data_noti['type_id'] = $data['review_id'];
+                $data_noti['url'] = '/reviews/'.$data['review_id'].'#comment-'.$comment->id;
             } else {
                 $data_noti['to_user_id'] = Comment::findOrFail($data['is_reply_to'])->user_id;
                 $data_noti['type'] = 'replied';
                 $data_noti['type_id'] = $data['is_reply_to'];
+                $data_noti['url'] = '/reviews/'.$data['review_id'].'#li-reply-'.$comment->id;
             }
             if ($data_noti['from_user_id'] != $data_noti['to_user_id']) {
                 $noti = Notification::create($data_noti);

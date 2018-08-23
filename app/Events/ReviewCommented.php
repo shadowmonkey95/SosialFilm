@@ -17,6 +17,7 @@ use Carbon\Carbon;
 class ReviewCommented implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+
     public $from_user_name;
     public $type;
     public $type_id;
@@ -25,6 +26,10 @@ class ReviewCommented implements ShouldBroadcast
     public $avatar;
     public $count;
     public $to_user_id;
+    public $url;
+    public $id;
+    public $click;
+
     public function __construct($id)
     {
         //0 = from_user_name
@@ -33,12 +38,18 @@ class ReviewCommented implements ShouldBroadcast
         //3 = diff_time
         //4 = diff_type
         //5 = avatar
+        //6 = url
+        //7 = id
+        //8 = click
 //        $this->sent_name = $sent_name;
         $to_user_id = Notification::find($id)->to_user_id;
         $from_user_id = Notification::find($id)->from_user_id;
         $this->to_user_id = Notification::find($id)->to_user_id;
         $this->from_user_name = User::findOrFail($from_user_id)->name;
         $this->avatar = User::findOrFail($from_user_id)->avatar;
+        $this->url = Notification::find($id)->url;
+        $this->id = $id;
+        $this->click = Notification::find($id)->click;
         $this->type = Notification::find($id)->type;
         $this->type_id = Notification::find($id)->type_id;
         $created_at = Notification::find($id)->created_at;
