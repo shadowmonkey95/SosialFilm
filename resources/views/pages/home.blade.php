@@ -182,8 +182,7 @@
                                 var htmlResult = '<div id="posts" class="post-grid grid-container grid-3 clearfix" data-layout="fitRows">';
                                 result.forEach(function (item) {
                                     htmlResult += '<div class="entry clearfix">';
-                                    htmlResult += '<div class="entry-image"><a href="' + item['poster'] + '" data-lightbox="image">';
-                                    htmlResult += '<img class="image_fade" src="' + item['poster'] + '" alt="Standard Post with Image"></a></div>';
+                                    htmlResult += '<div class="entry-image entry-image-hover"><img class="image_fade" src="' + item['poster'] + '" alt="Standard Post with Image"></div>';
                                     htmlResult += '<div class="entry-title"><h2><a href="/reviews/'+item['id']+'">' + item['title'] + '</a></h2></div>';
                                     htmlResult += '<ul class="entry-meta clearfix">';
                                     htmlResult += '<li><i class="icon-calendar3"></i>' + item['created_at'] + '</li>';
