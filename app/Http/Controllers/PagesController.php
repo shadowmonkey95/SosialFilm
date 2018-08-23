@@ -18,6 +18,7 @@ class PagesController extends Controller
     {
         $movies = Movie::orderBy('created_at', 'desc')->take(6)->get();
         $arrMovies = json_decode(json_encode($movies), true);
+
 //        Lay 3 review gan day nhat
         $reviews = DB::table('reviews')
             ->join('movies', 'reviews.movie_id', '=', 'movies.id')
@@ -44,7 +45,6 @@ class PagesController extends Controller
             if ($item1['like'] == $item2['like']) {
                 return 0;
             }
-
             return $item1['like'] < $item2['like'] ? 1 : -1;
         });
         $genres = Genre::pluck('name', 'id');
