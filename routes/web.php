@@ -26,6 +26,8 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('notification.fetch_noti_list');
     Route::post('notification/read', 'NotificationsController@read')
         ->name('notification.read');
+    Route::post('notification/click', 'NotificationsController@click')
+        ->name('notification.click');
     Route::get('reviews/createId/{id}', 'ReviewsController@createId')->name('reviews.createId');
 });
 Route::get('reviews/{review}', 'ReviewsController@show')->name('reviews.show');

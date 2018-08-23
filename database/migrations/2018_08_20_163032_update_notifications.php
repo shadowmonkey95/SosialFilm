@@ -33,10 +33,6 @@ class UpdateNotifications extends Migration
                 $table->integer('type_id');
             });
         }
-
-        Schema::table('notifications', function ($table) {
-            $table->timestamps();
-        });
     }
 
     /**

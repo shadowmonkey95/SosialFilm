@@ -13,5 +13,6 @@ class Notification extends Model
         'read',
         'click',
         'type_id',
+        'url',
     ];
 }

@@ -68,6 +68,7 @@
                 var i;
                 var content = '';
                 var html ='';
+                var style = '';
                 $.ajax({
                     url: "{{ url('notification/fetch_noti_list') }}",
                     method: 'POST',
@@ -80,6 +81,9 @@
                         //3 = diff_time
                         //4 = diff_type
                         //5 = avatar
+                        //6 = url
+                        //7 = id
+                        //8 = click
                         // console.log(data);
                         for (i = 0; i < data.length; i++) {
                             if (data[i][1] == 'replied') {
@@ -87,7 +91,15 @@
                             } else if (data[i][1] == 'commented') {
                                 content = ' on your review';
                             }
-                            html = '<li class="headerNotify_item">' +
+
+                            if (data[i][8] == 1) {
+                                style = 'background-color: white;';
+                            } else {
+                                style = 'background-color: #d3d3d3b0;';
+                            }
+                            html =
+                                '<a class="a-noti-list" id="noti_'+ data[i][7] +'" href="'+ data[i][6] +'">' +
+                                '<li class="headerNotify_item" style="'+ style +'">' +
                                 '<div class="headerNotify_block-img">' +
                                 '<img class="headerNotify_pic" src="' + data[i][5] + '">' +
                                 '</div>' +
@@ -95,14 +107,14 @@
                                 '<em class="headerNotify_em">' + data[i][0] + '</em>' + ' ' + data[i][1] + content +
                                 '</div>' +
                                 '<div class="headerNotify_block-time">' + data[i][3] + ' ' + data[i][4] + ' ago' +
-                                '</li>';
+                                '</li>' +
+                                '</a>';
                             $('#noti-list').append(html);
                         }
                     }
                 })
             }
             $('#top-cart-trigger').click( function(e) {
-                console.log('da click');
                 e.preventDefault();
                 $.ajax({
                     url: "{{ url('notification/read') }}",
@@ -115,26 +127,70 @@
                 })
                 $('#noti-count').html("0");
             });
+
+            $(document).on('click','[id^="noti_"]', function(e){
+                e.preventDefault();
+                $.ajax({
+                    url: "{{ url('notification/click') }}",
+                    method: 'POST',
+                    data:
+                        {
+                            id: $(this).attr('id'),
+                        },
+                    dataType: 'JSON',
+                    success: function(data)
+                    {
+                        // console.log(data);
+                        window.location.href = data;
+                    }
+                });
+                $(this).find('.headerNotify_item').css('background-color', 'white');
+            });
+
+            if ( "{{ Auth::check() }}") {
+                Pusher.logToConsole = true;
+                var pusher_review_commented = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
+                    encrypted: true,
+                    cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
+                });
+                var channel = pusher_review_commented.subscribe('review-commented');
+                channel.bind('App\\Events\\ReviewCommented', function(data) {
+                    console.log(data);
+                    if ( "{{ Auth::id() }}" == data['to_user_id']) {
+                        //0 = from_user_name
+                        //1 = type
+                        //2 = type_id
+                        //3 = diff_time
+                        //4 = diff_type
+                        //5 = avatar
+                        //6 = url
+                        //7 = id
+                        $('#noti-count').html(data['count']);
+                            if (data['type'] == 'replied') {
+                                content = ' to a comment you made';
+                            } else if (data['type'] == 'commented') {
+                                content = ' on your review';
+                            }
+
+                            html =
+                                '<a class="a-noti-list" id="noti_'+ data['id'] +'" href="'+ data['url'] +'">' +
+                                '<li class="headerNotify_item">' +
+                                '<div class="headerNotify_block-img">' +
+                                '<img class="headerNotify_pic" src="' + data['avatar'] + '">' +
+                                '</div>' +
+                                '<div class="headerNotify_block-txt">' +
+                                '<em class="headerNotify_em">' + data['from_user_name'] + '</em>' + ' ' + data['type'] + content +
+                                '</div>' +
+                                '<div class="headerNotify_block-time">' + data['diff_time'] + ' ' + data['diff_type'] + ' ago' +
+                                '</li>' +
+                                '</a>';
+                            $('#noti-list').prepend(html);
+                    }
+                });
+            }
         });
     </script>
-
-    <script type="text/javascript">
-        if ( "{{ Auth::check() }}") {
-            Pusher.logToConsole = true;
-            var pusher_review_commented = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
-                encrypted: true,
-                cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
-            });
-            var channel = pusher_review_commented.subscribe('review-commented');
-            channel.bind('App\\Events\\ReviewCommented', function(data) {
-                console.log(data['result']);
-                if ( "{{ Auth::id() }}" == data['to_user_id']) {
-                    $('#noti-count').html(data['count']);
-                }
-                // $('#noti-list').append(data['message']);
-            });
-        }
-    </script>
+    
     <script >
         $(document).ready(function() {
             $('.select2').select2();
