@@ -12,13 +12,6 @@
 
             <nav id="primary-menu">
                 <ul>
-                    <div class="nav-avatar">
-                        {!! Form::open() !!}
-                            <input type="search" name="q" class=" alert alert-success search-input" value="" placeholder="{{trans('message.search')}}" size="35">
-                        {!! Form::close() !!}
-                    </div>
-                </ul>
-                <ul>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Language <span class="caret"></span>
@@ -55,6 +48,9 @@
                                     <a href="{{ route('reviews.index') }}">{{ __('My Reviews') }}</a>
                                 </li>
                                 <li>
+                                    <a href="{{ route('reviews.create') }}"> {{ __('Create a review') }}</a>
+                                </li>
+                                <li>
                                     <a href="{{ route('profile.edit', Auth::user()->id) }}" class="dropdown-item">{{ __('Profile') }}</a>
                                 </li>
                                 <li>
@@ -72,10 +68,65 @@
                         <div id="logo" class="nav-avatar">
                             <img src="{{ Auth::user()->avatar }}" class="img-circle img-avatar">
                         </div>
-                    @endguest
+                    {{--@endguest--}}
                 </ul>
 
+                <div id="top-cart">
+                    <a href="#" id="top-cart-trigger"><i class="fas fa-bell"></i><span id="noti-count"></span></a>
+                    <div class="top-cart-content">
+                        {{--<div class="top-cart-items">--}}
+                            <ul id="noti-list" class="headerNotify_content">
+
+                            </ul>
+                        {{--</div>--}}
+                    </div>
+                </div>
+
+                <div id="top-cart">
+                    <a id="top-cart-trigger" class="bach-filter"><i class="fas fa-filter"></i></a>
+                    <div class="top-cart-content">
+                    </div>
+                </div>
+
+                {{--<div class="filter-icon">--}}
+                    {{--<i class="fas fa-filter"></i>--}}
+                {{--</div>--}}
+
+                <div id="top-search">
+                    <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+                    {!! Form::open() !!}
+                    <input type="text" name="q" class="form-control search-input" value="" placeholder="Type &amp; Hit Enter..">
+                    {!! Form::close() !!}
+                </div>
+                @endguest
             </nav>
         </div>
+        {{-- filter --}}
+        {{--<div id="bach-filter" class="row justify-content-center">--}}
+            {{--<div class="container row justify-content-center">--}}
+                {{--{!! Form::open(['route' => 'moviefilter.search', 'id' => 'form-search']) !!}--}}
+                {{--<div class="row">--}}
+                    {{--<div class="col-sm">--}}
+                        {{--<div class="form-group">--}}
+                            {{--{!! Form::label( trans('message.selectgenre')) !!}--}}
+                            {{--{!! Form::select('genre_id',App\Genre::getGenre(), null, [ 'class' => 'select2 sm-form-control fix-select',  'size' => '5']) !!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-sm">--}}
+                        {{--<div class="form-group">--}}
+                            {{--{!! Form::label( trans('message.selectcountry')) !!}--}}
+                            {{--{!! Form::select('country_id',App\Country::getCountry(), null, [ 'class' => 'select2 sm-form-control fix-select',  'size' => '5']) !!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-sm">--}}
+                        {{--<div class="form-group">--}}
+                            {{--<br>--}}
+                            {{--{!! Form::submit(trans('message.search'), ['class' => 'btn btn-primary btn-search']) !!}--}}
+                            {{--{!! Form::close() !!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </div>
 </header>

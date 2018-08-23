@@ -22,8 +22,8 @@
                             <ul class="entry-meta clearfix">
                                 <li><i class="icon-calendar3"></i> {{ $review->created_at }}</li>
                                 <li><a href="#"><i class="icon-user"></i> {{ $username }}</a></li>
-                                <li><i class="fa fa-film"></i> <a href="#">{{ $movie->title }}</a></li>
-                                <li><a href="#"><i class="icon-comments"></i> 43 Comments</a></li>
+                                <li><i class="fa fa-film"></i> <a href="{{ route('moviedetails.show', $movie->id) }}">{{ $movie->title }}</a></li>
+                                <li><a href="#"><i id="count-comments" class="icon-comments"></i></a></li>
                                 <li><a href="#"><i class="icon-like"></i> {{ $like }} Likes</a></li>
                             </ul>
                             <div class="entry-image">
@@ -36,67 +36,67 @@
                                     @if (empty($likeUser))
                                         <div class="btn btn-outline-info clearfix bottommargin " id = "like-btn">
                                             <a href="{{ route('like', ['id' => $review->id]) }}">
-                                                <span class="fa fa-thumbs-up">{{ trans('message.like') }}</span>
+                                                <span id="like" class="fa fa-thumbs-up">{{ trans('message.like') }}</span>
                                             </a>
                                         </div>
                                     @else
                                         <div class=" clearfix bottommargin btn btn-outline-danger  " id = "like-btn">
                                             <a href="{{ route('like', ['id' => $review->id]) }}">
-                                                <span class="fa fa-thumbs-down">{{ trans('message.unlike') }}</span>
+                                                <span id="unlike" class="fa fa-thumbs-down">{{ trans('message.unlike') }}</span>
                                             </a>
                                         </div>
                                     @endif
                                 @else
-                                    <div class="btn btn-outline-info clearfix bottommargin " id = "like-btn">
-                                        <a href="">
-                                            <span class= "fa fa-thumbs-up">({{ $like }})</span>
-                                        </a>
-                                        <span> {{ trans('message.like') }}</span>
-                                    </div>
+                                    {{--<div class="btn btn-outline-info clearfix bottommargin " id = "like-btn">--}}
+                                        {{--<a href="">--}}
+                                            {{--<span class= "fa fa-thumbs-up">({{ $like }})</span>--}}
+                                        {{--</a>--}}
+                                        {{--<span> {{ trans('message.like') }}</span>--}}
+                                    {{--</div>--}}
                                     <div class="clearfix bottommargin alert alert-primary ">
                                         <span> {{ trans('message.likeforguest') }}</span>
                                     </div>
                                 @endif
-                                <div class="clear"></div>
+                                {{--<div class="clear"></div>--}}
 
-                                <div class="si-share noborder clearfix">
-                                    <span>Share this Post:</span>
-                                    <div>
-                                        <a href="#" class="social-icon si-borderless si-facebook">
-                                            <i class="icon-facebook"></i>
-                                            <i class="icon-facebook"></i>
-                                        </a>
-                                        <a href="#" class="social-icon si-borderless si-twitter">
-                                            <i class="icon-twitter"></i>
-                                            <i class="icon-twitter"></i>
-                                        </a>
-                                    </div>
-                                </div>
+                                {{--<div class="si-share noborder clearfix">--}}
+                                    {{--<span>Share this Post:</span>--}}
+                                    {{--<div>--}}
+                                        {{--<a href="#" class="social-icon si-borderless si-facebook">--}}
+                                            {{--<i class="icon-facebook"></i>--}}
+                                            {{--<i class="icon-facebook"></i>--}}
+                                        {{--</a>--}}
+                                        {{--<a href="#" class="social-icon si-borderless si-twitter">--}}
+                                            {{--<i class="icon-twitter"></i>--}}
+                                            {{--<i class="icon-twitter"></i>--}}
+                                        {{--</a>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                             </div>
                         </div>
 
-                        <div class="post-navigation clearfix">
-                            <div class="col_half nobottommargin">
-                                <a href="#">&lArr; This is a Standard post with a Slider Gallery</a>
-                            </div>
-                            <div class="col_half col_last tright nobottommargin">
-                                <a href="#">This is an Embedded Audio Post &rArr;</a>
-                            </div>
-                        </div>
-                        <div class="line"></div>
+                        {{--<div class="post-navigation clearfix">--}}
+                            {{--<div class="col_half nobottommargin">--}}
+                                {{--<a href="#">&lArr; This is a Standard post with a Slider Gallery</a>--}}
+                            {{--</div>--}}
+                            {{--<div class="col_half col_last tright nobottommargin">--}}
+                                {{--<a href="#">This is an Embedded Audio Post &rArr;</a>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="line"></div>--}}
 
-                        <div class="card">
-                            <div class="card-header"><strong>Posted by <a href="#">John Doe</a></strong></div>
-                            <div class="card-body">
-                                <div class="author-image">
-                                    <img src="images/author/1.jpg" alt="" class="rounded-circle">
-                                </div>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eveniet, eligendi et nobis neque minus mollitia sit repudiandae ad repellendus recusandae blanditiis praesentium vitae ab sint earum voluptate velit beatae alias fugit accusantium laboriosam nisi reiciendis deleniti tenetur molestiae maxime id quaerat consequatur fugiat aliquam laborum nam aliquid. Consectetur, perferendis?
-                            </div>
-                        </div>
-                        <div class="line"></div>
+                        {{--<div class="card">--}}
+                            {{--<div class="card-header"><strong>Posted by <a href="#">John Doe</a></strong></div>--}}
+                            {{--<div class="card-body">--}}
+                                {{--<div class="author-image">--}}
+                                    {{--<img src="images/author/1.jpg" alt="" class="rounded-circle">--}}
+                                {{--</div>--}}
+                                {{--Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eveniet, eligendi et nobis neque minus mollitia sit repudiandae ad repellendus recusandae blanditiis praesentium vitae ab sint earum voluptate velit beatae alias fugit accusantium laboriosam nisi reiciendis deleniti tenetur molestiae maxime id quaerat consequatur fugiat aliquam laborum nam aliquid. Consectetur, perferendis?--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="line"></div>--}}
                         {{--COMMENT BEGINS--}}
-                        <div id="comments" class="clearfix">
+                        {{--<div id="comments" class="clearfix">--}}
                             {{--<h3 id="comments-title"><span>3</span> Comments</h3>--}}
                             <h3 id="comments-title"></h3>
                             @if (Auth::check())
@@ -120,7 +120,7 @@
                             <ol class="commentlist clearfix" id="display-comment">
                             </ol>
                             <div class="clear"></div>
-                        </div>
+                        {{--</div>--}}
                     </div>
                 </div>
 
@@ -518,99 +518,113 @@
 @endsection
 
 @section('script')
-    <script>
+    <script type="text/javascript">
+        function load_comment() {
+            var i;
+            var html = '';
+            $.ajax({
+                url: "{{ url('comment/fetch') }}",
+                data: {
+                    review_id: window.location.pathname.split('/').slice(-1).pop(),
+                },
+                method: 'POST',
+                dataType: 'JSON',
+                success: function(data) {
+                    //0 = email
+                    //1 = created_at
+                    //2 = content
+                    //3 = comment_id
+                    //4 = avatar
+                    console.log(data);
+                    $('#comments-title').html('<span>'+ data.length + '</span> Comments');
+                    $('#count-comments').html(data.length + ' Comments');
+                    for (i = 0; i < data.length; i++) {
+                        html += '<li id="li-comment-' + data[i][3] + '">' +
+                            '<div id="comment-' + data[i][3] + '" class="comment-wrap clearfix">' +
+                            '<div class="comment-meta">' +
+                            '<div class="comment-author vcard">' +
+                            '<span class="comment-avatar clearfix">' +
+                            '<img alt=\'\' src=\'' + data[i][4] + '\' class=\'avatar avatar-60 photo\' height=\'60\' width=\'60\' />' +
+                            '</span>' +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="comment-content clearfix">' +
+                            '<div class="comment-author"><a>' + data[i][0] + '</a><span><a>' + data[i][1] + '</a></span></div>' +
+                            '<p>' + data[i][2] + '</p>' +
+                            '<a class="comment-reply-link"><i id="' + data[i][3] + '" class="icon-reply"></i></a>' +
+                            '</div>' +
+                            '<div class="clear"></div>' +
+                            '</div>' +
+                            '<div id="display-reply-' + data[i][3] + '" class="display-none reply"></div>' +
+                            '<div id="display-replies-' + data[i][3] + '" class="reply"></div>' +
+                            '</li>';
+                    }
+                    $('#display-comment').html(html);
+                }
+            })
+        }
+        function load_reply() {
+            var i;
+            var html = '';
+            $.ajax({
+                url: "{{ url('comment/fetch2') }}",
+                data: {
+                    review_id: window.location.pathname.split('/').slice(-1).pop(),
+                },
+                method: 'POST',
+                dataType: 'JSON',
+                success: function(data)
+                {
+                    //0 = email
+                    //1 = created_at
+                    //2 = content
+                    //3 = comment_id
+                    //4 = avatar
+                    for (i = 0; i < data.length; i++) {
+                        html = '<li id="li-reply-' + data[i][3] + '">' +
+                            '<div id="reply-' + data[i][3] + '" class="comment-wrap clearfix">' +
+                            '<div class="comment-meta">' +
+                            '<div class="comment-author vcard">' +
+                            '<span class="comment-avatar clearfix">' +
+                            '<img alt=\'\' src=\'' + data[i][4] + '\' class=\'avatar avatar-60 photo\' height=\'60\' width=\'60\' />' +
+                            '</span>' +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="comment-content clearfix">' +
+                            '<div class="comment-author"><a>' + data[i][0] + '</a><span><a>' + data[i][1] + '</a></span></div>' +
+                            '<p>' + data[i][2] + '</p>' +
+                            '</div>' +
+                            '<div class="clear"></div>' +
+                            '</div>' +
+                            // '<div id="display-reply-' + data[i][3] + '" class="display-none reply"></div>' +
+                            '</li>';
+                        $('#display-replies-' + data[i][5] +'').append(html);
+                    }
+                    // console.log(data);
+                }
+            })
+        }
+        Pusher.logToConsole = true;
+        //▼Begin pusher for comment
+        var commented_pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
+            encrypted: true,
+            cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
+        });
+        var channel = commented_pusher.subscribe('commented');
+        channel.bind('App\\Events\\Commented', function(data) {
+            // console.log(data);
+            load_comment();
+            load_reply();
+        });
+        //▲End pusher for comment
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
         $(document).ready(function() {
-            function load_comment() {
-                var i;
-                var html = '';
-                $.ajax({
-                    url: "{{ url('comment/fetch') }}",
-                    data: {
-                        review_id: window.location.pathname.split('/').slice(-1).pop(),
-                    },
-                    method: 'POST',
-                    dataType: 'JSON',
-                    success: function(data) {
-                        //0 = email
-                        //1 = created_at
-                        //2 = content
-                        //3 = comment_id
-                        //4 = avatar
-                        $('#comments-title').html('<span>'+ data.length + '</span> Comments');
-                        for (i = 0; i < data.length; i++) {
-                            html += '<li id="li-comment-' + data[i][3] + '">' +
-                                '<div id="comment-' + data[i][3] + '" class="comment-wrap clearfix">' +
-                                '<div class="comment-meta">' +
-                                '<div class="comment-author vcard">' +
-                                '<span class="comment-avatar clearfix">' +
-                                '<img alt=\'\' src=\'' + data[i][4] + '\' class=\'avatar avatar-60 photo\' height=\'60\' width=\'60\' />' +
-                                '</span>' +
-                                '</div>' +
-                                '</div>' +
-                                '<div class="comment-content clearfix">' +
-                                '<div class="comment-author"><a>' + data[i][0] + '</a><span><a>' + data[i][1] + '</a></span></div>' +
-                                '<p>' + data[i][2] + '</p>' +
-                                '<a class="comment-reply-link"><i id="' + data[i][3] + '" class="icon-reply"></i></a>' +
-                                '</div>' +
-                                '<div class="clear"></div>' +
-                                '</div>' +
-                                '<div id="display-reply-' + data[i][3] + '" class="display-none reply"></div>' +
-                                '<div id="display-replies-' + data[i][3] + '" class="reply"></div>' +
-                                '</li>';
-                        }
-                        $('#display-comment').html(html);
-                    }
-                })
-            }
-            function load_reply() {
-                var i;
-                var html = '';
-                $.ajax({
-                    url: "{{ url('comment/fetch2') }}",
-                    data: {
-                        review_id: window.location.pathname.split('/').slice(-1).pop(),
-                    },
-                    method: 'POST',
-                    dataType: 'JSON',
-                    success: function(data)
-                    {
-                        //0 = email
-                        //1 = created_at
-                        //2 = content
-                        //3 = comment_id
-                        //4 = avatar
-                        for (i = 0; i < data.length; i++) {
-                            html = '<li id="li-reply-' + data[i][3] + '">' +
-                                '<div id="reply-' + data[i][3] + '" class="comment-wrap clearfix">' +
-                                '<div class="comment-meta">' +
-                                '<div class="comment-author vcard">' +
-                                '<span class="comment-avatar clearfix">' +
-                                '<img alt=\'\' src=\'' + data[i][4] + '\' class=\'avatar avatar-60 photo\' height=\'60\' width=\'60\' />' +
-                                '</span>' +
-                                '</div>' +
-                                '</div>' +
-                                '<div class="comment-content clearfix">' +
-                                '<div class="comment-author"><a>' + data[i][0] + '</a><span><a>' + data[i][1] + '</a></span></div>' +
-                                '<p>' + data[i][2] + '</p>' +
-                                '</div>' +
-                                '<div class="clear"></div>' +
-                                '</div>' +
-                                // '<div id="display-reply-' + data[i][3] + '" class="display-none reply"></div>' +
-                                '</li>';
-                            $('#display-replies-' + data[i][5] +'').append(html);
-                        }
-                        console.log(data);
-                    }
-                })
-            }
             load_comment();
             load_reply();
-
             $(document).on('submit','[id^="reply_form_"]', function(e){
                 e.preventDefault();
                 $.ajax({
@@ -625,7 +639,6 @@
                     }
                 })
             });
-
             $(document).on('submit','#comment_form', function(e){
                 e.preventDefault();
                 $.ajax({
@@ -640,7 +653,6 @@
                     }
                 })
             });
-
             $(document).on('click', '.icon-reply', function () {
                 var id = $(this).attr("id");
                 var review_id = window.location.pathname.split('/').slice(-1).pop();
@@ -659,6 +671,27 @@
                 $('#display-reply-' + id).html(html).toggleClass('display-none');
                 $('.reply-box:not(#reply-content-' + id + ')').hide();
             });
+            {{--$(document).on('click', '#like', function (e) {--}}
+                {{--e.preventDefault();--}}
+                {{--$.ajax({--}}
+                    {{--url: "{{ route('like', ['id' => $review->id]) }}",--}}
+                    {{--method: 'POST',--}}
+                    {{--success: function(data) {--}}
+                        {{--console.log(data);--}}
+                    {{--}--}}
+                {{--})--}}
+            {{--});--}}
+
+            {{--$(document).on('click', '#unlike', function (e) {--}}
+                {{--e.preventDefault();--}}
+                {{--$.ajax({--}}
+                    {{--url: "{{ route('like', ['id' => $review->id]) }}",--}}
+                    {{--method: 'POST',--}}
+                    {{--success: function(data) {--}}
+                        {{--console.log(data);--}}
+                    {{--}--}}
+                {{--})--}}
+            {{--});--}}
         });
     </script>
 @endsection

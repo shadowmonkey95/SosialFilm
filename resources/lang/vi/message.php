@@ -20,4 +20,5 @@ return [
     'selectmovie' => 'Chọn phim reviews...',
     'unlike' => 'Bỏ thích',
     'like' => 'Thích',
+    'selectcountry' => 'Quốc gia',
 ];
