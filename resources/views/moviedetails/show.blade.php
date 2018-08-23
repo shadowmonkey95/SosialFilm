@@ -43,8 +43,8 @@
 
                             </div>
                             <div class="col-sm">
-                                <a href="#">IMDB:{{ $movies->imdb_score }}</a><br>
-                                <a href="#">Runtime:{{ $movies->runtime }} minute </a>
+                                <a href="#">IMDB: {{ $movies->imdb_score }}</a><br>
+                                <a href="#">Runtime: {{ $movies->runtime }} minute </a>
                             </div>
                         </div>
                         <ul style="list-style-type:none" >
@@ -57,9 +57,12 @@
 
                         <div class="entry-content notopmargin">
                             <p>{!! $movies->overview !!}</p>
-                            <div class="media">
-                                <iframe width="420" height="315" src="{{$movies->trailer}}" frameborder="0" allowfullscreen></iframe>
-
+                            <div class="row">
+                                <div class="w-100">
+                                    <div class="media margin-bottom-100">
+                                        <iframe src="{{ $movies->trailer }}" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                </div>
                             </div>
                                 {!! Form::open(['route' => ['reviews.createId', $movies->id], 'method' => 'get', 'class' => 'detail']) !!}
                                     {!! Form::submit(trans('message.createmovie'), ['class' => 'btn btn-primary btn-detail']) !!}

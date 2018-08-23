@@ -48,6 +48,9 @@
                                     <a href="{{ route('reviews.index') }}">{{ __('My Reviews') }}</a>
                                 </li>
                                 <li>
+                                    <a href="{{ route('reviews.create') }}"> {{ __('Create a review') }}</a>
+                                </li>
+                                <li>
                                     <a href="{{ route('profile.edit', Auth::user()->id) }}" class="dropdown-item">{{ __('Profile') }}</a>
                                 </li>
                                 <li>

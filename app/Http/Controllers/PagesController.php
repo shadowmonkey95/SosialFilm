@@ -10,12 +10,13 @@ use App\Movie;
 use App\Review;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Config;
 
 class PagesController extends Controller
 {
     public function welcome()
     {
-        $movies = Movie::orderBy('created_at', 'desc')->take(9)->get();
+        $movies = Movie::orderBy('created_at', 'desc')->take(6)->get();
         $arrMovies = json_decode(json_encode($movies), true);
 //        Lay 3 review gan day nhat
         $reviews = DB::table('reviews')
@@ -46,10 +47,8 @@ class PagesController extends Controller
 
             return $item1['like'] < $item2['like'] ? 1 : -1;
         });
-        // $x =1;
         $genres = Genre::pluck('name', 'id');
-// var_dump($genre);
-// exit();
+
         return view('pages.home', compact('arrMovies', 'reviews', 'sortReviews', 'movies', 'genres'));
     }
 

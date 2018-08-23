@@ -17,14 +17,16 @@
                                     <a href="{{ $movie->poster }}" data-lightbox="image"><img class="image_fade" src="{{ $movie->poster }}" alt="Standard Post with Image"></a>
                                 </div>
                                 <div class="entry-title">
-                                    <h2><a href="#">{{ $movie->title }}</a></h2>
+                                    <h2><a href="{{ route('moviedetails.show', $movie->id) }}">{{ $movie->title }}</a></h2>
                                 </div>
                                 <ul class="entry-meta clearfix">
                                     <li><i class="icon-calendar3"></i> {{ $movie->realease_date }}</li>
                                 </ul>
-                                <div class="entry-content">
-                                    <p>{{ $movie->overview }}</p>
-                                    <a href="#" class="more-link">{{ __('Review This Film Now') }}</a>
+                                <div class="entry-content fixed-height">
+                                    <p>
+                                        {!! str_limit(strip_tags($movie->overview), 400) !!}
+                                        <a href="{{ route('reviews.create') }}" class="more-link">{{ __('Review This Film Now') }}</a>
+                                    </p>
                                 </div>
                             </div>
                         @endforeach
